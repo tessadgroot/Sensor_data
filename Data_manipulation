@@ -1,0 +1,31 @@
+import pandas as pd
+
+# Input file path 
+print('Enter file path: ')
+fileurl = input()
+
+# Excel information stored in variable if path is correct.
+try:
+    sensor_data = pd.read_excel(fileurl)
+except FileNotFoundError:
+    print("Bestand niet gevonden, controleer het pad!")
+    exit()
+
+# Max, min, average and moving average values are stored.
+sensor_max = sensor_data['Temp'].max()
+sensor_min = sensor_data['Temp'].min()
+sensor_avg = sensor_data['Temp'].mean()
+sensor_data["moving_avg"] = sensor_data["Temp"].rolling(window=10).mean()
+
+# value that is on row 6 is stored
+sensor_row = sensor_data.iloc[5]
+
+# Print stored values
+print(f"Max temp: {sensor_max}, Min temp: {sensor_min}, Gemiddelde temp: {sensor_avg:.2f}")
+print(f"6de rij: {sensor_row}")
+print(f"Geupdate tabel: {sensor_data}")
+
+# Show which sensors are out of range
+for index in range(len(sensor_data)):
+    if sensor_data["Temp"][index] > 30:
+        print("Sensor ", sensor_data["Sensor"][index], " Out of Range")
