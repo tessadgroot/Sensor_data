@@ -6,7 +6,8 @@ I use this project to practice working with datasets, Python, and common data-en
 ## 📌 Project Purpose
 The goal of this repository is to:
 - Explore how sensor data can be processed programmatically  
-- Practice Python skills in a data-focused context    
+- Practice Python skills in a data-focused context
+- Excel sensor data files
 
 ## 🧰 Technologies & Tools
 - **Python**
